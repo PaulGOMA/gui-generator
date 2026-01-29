@@ -4,7 +4,8 @@
   "description": "Modular GUI generator with TypeScript and ESLint integration",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "build": "tsc",
     "start": "node dist/index.js"
   },
@@ -15,16 +16,19 @@
   "keywords": [],
   "author": "Paul Valerie GOMA paulgoma@gmail.com",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/PaulGOMA/gui-generator/issues"
   },
   "homepage": "https://github.com/PaulGOMA/gui-generator#readme",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.1.0",
     "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.54.0",
     "eslint": "^9.39.2",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
     "typescript": "^5.9.3"
   }
 }
