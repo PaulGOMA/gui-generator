@@ -1,0 +1,30 @@
+{
+  "name": "gui-generator",
+  "version": "1.0.0",
+  "description": "Modular GUI generator with TypeScript and ESLint integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulGOMA/gui-generator.git"
+  },
+  "keywords": [],
+  "author": "Paul Valerie GOMA paulgoma@gmail.com",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/PaulGOMA/gui-generator/issues"
+  },
+  "homepage": "https://github.com/PaulGOMA/gui-generator#readme",
+  "devDependencies": {
+    "@types/node": "^25.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3"
+  }
+}
