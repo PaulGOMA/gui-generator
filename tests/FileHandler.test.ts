@@ -1,6 +1,6 @@
 import { FileHandler } from "../src/utils/FileHandler";
 
-// On mock fs/promises
+// Mock du module fs/promises
 jest.mock("node:fs/promises", () => ({
     readFile: jest.fn()
 }));
@@ -8,6 +8,10 @@ jest.mock("node:fs/promises", () => ({
 import fs from "node:fs/promises";
 
 describe("FileHandler", () => {
+
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
 
     it("should read a text file", async () => {
         // Arrange
@@ -37,16 +41,7 @@ describe("FileHandler", () => {
     });
 
     it("should throw an error if file cannot be read", async () => {
-        // Arrange
-        (fs.readFile as jest.Mock).mockRejectedValue(new Error("File not found"));
-
-        const handler = FileHandler("missing.json");
-
-        // Act + Assert
-        await expect(handler.readFile()).rejects.toThrow("File not found");
-    });
-
-    it("should throw an error if file cannot be read", async () => {
+        // On supprime le bruit console.error
         jest.spyOn(console, "error").mockImplementation(() => {});
 
         (fs.readFile as jest.Mock).mockRejectedValue(new Error("File not found"));
@@ -56,4 +51,13 @@ describe("FileHandler", () => {
         await expect(handler.readFile()).rejects.toThrow("File not found");
     });
 
+    it("should throw an error if JSON is invalid", async () => {
+        jest.spyOn(console, "error").mockImplementation(() => {});
+
+        (fs.readFile as jest.Mock).mockResolvedValue("INVALID_JSON");
+
+        const handler = FileHandler("bad.json");
+
+        await expect(handler.readJSON()).rejects.toThrow();
+    });
 });
