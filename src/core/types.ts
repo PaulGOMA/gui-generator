@@ -3,6 +3,15 @@ export interface ComponentData {
     type: ComponentType
 }
 
+// FONT STORAGE
+export interface FontStorageData { 
+    [family: string]: { 
+        [weight: string]: { 
+            [style: string]: string
+        } 
+    } 
+}
+
 // TEXT
 export interface TextComponentData extends ComponentData {
     value: string
